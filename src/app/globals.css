@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  /* Custom scrollbar for sidebar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-600;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-12 relative inline-block;
+  }
+
+  .section-title span {
+    @apply text-primary;
+  }
+
+  /* Underline accent below section titles */
+  .section-title::after {
+    content: '';
+    @apply absolute -bottom-3 left-0 w-12 h-1 bg-primary rounded-full;
+  }
+
+  .btn-primary {
+    @apply inline-block px-6 py-3 bg-primary text-white rounded-lg
+           hover:bg-primary-dark transition-all duration-200
+           font-medium text-sm uppercase tracking-wider
+           hover:shadow-lg hover:shadow-primary/25;
+  }
+
+  /* Glass-morphism card effect */
+  .glass-card {
+    @apply bg-dark-card/80 backdrop-blur-sm border border-white/5
+           rounded-xl transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply border-primary/20 shadow-lg shadow-primary/5;
+  }
+
+  /* Section divider line */
+  .section-divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent my-0;
+  }
+}
