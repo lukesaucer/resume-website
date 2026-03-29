@@ -4,13 +4,16 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { AnimateIn } from '@/components/AnimateIn'
+import { GitHubPinnedRepos } from '@/components/GitHubPinnedRepos'
+import type { GitHubPinnedRepo } from '@/lib/github'
 
 interface PortfolioSectionProps {
   items: any[]
   categories: any[]
+  pinnedRepos: GitHubPinnedRepo[]
 }
 
-export function PortfolioSection({ items, categories }: PortfolioSectionProps) {
+export function PortfolioSection({ items, categories, pinnedRepos }: PortfolioSectionProps) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [lightboxItem, setLightboxItem] = useState<any | null>(null)
 
@@ -114,6 +117,8 @@ export function PortfolioSection({ items, categories }: PortfolioSectionProps) {
       {filteredItems.length === 0 && (
         <p className="text-gray-400 dark:text-gray-600 text-center py-16">No portfolio items yet.</p>
       )}
+
+      <GitHubPinnedRepos repos={pinnedRepos} />
 
       {/* Lightbox modal */}
       <AnimatePresence>
