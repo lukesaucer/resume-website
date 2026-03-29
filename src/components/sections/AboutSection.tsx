@@ -27,7 +27,7 @@ export function AboutSection({ data }: AboutSectionProps) {
       <div className="grid md:grid-cols-12 gap-10 mb-16">
         {/* Bio */}
         <AnimateIn delay={0.1} className="md:col-span-7">
-          <p className="text-gray-400 leading-relaxed text-base">
+          <p className="text-gray-500 dark:text-gray-400 leading-relaxed text-base">
             {data.bio || ''}
           </p>
         </AnimateIn>
@@ -42,9 +42,9 @@ export function AboutSection({ data }: AboutSectionProps) {
                 { label: 'E-mail', value: 'lukesaucer@proton.me' },
                 { label: 'Phone', value: '+1 845 293 9183' },
               ].map((item) => (
-                <li key={item.label} className="flex justify-between border-b border-white/5 pb-3 last:border-0 last:pb-0">
-                  <span className="text-gray-600 text-sm">{item.label}</span>
-                  <span className="text-gray-300 text-sm font-medium">{item.value}</span>
+                <li key={item.label} className="flex justify-between border-b border-gray-100 dark:border-white/5 pb-3 last:border-0 last:pb-0">
+                  <span className="text-gray-400 dark:text-gray-600 text-sm">{item.label}</span>
+                  <span className="text-gray-700 dark:text-gray-300 text-sm font-medium">{item.value}</span>
                 </li>
               ))}
             </ul>
@@ -73,7 +73,7 @@ export function AboutSection({ data }: AboutSectionProps) {
                 </svg>
               </div>
               <div>
-                <h4 className="font-semibold text-base mb-1.5">{service.title}</h4>
+                <h4 className="font-semibold text-base mb-1.5 text-[#222] dark:text-white">{service.title}</h4>
                 <p className="text-gray-500 text-sm leading-relaxed">{service.description}</p>
               </div>
             </div>

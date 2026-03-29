@@ -45,7 +45,7 @@ export function PortfolioSection({ items, categories }: PortfolioSectionProps) {
             className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200
               ${!activeCategory
                 ? 'bg-primary text-white shadow-lg shadow-primary/25'
-                : 'bg-white/5 text-gray-500 hover:text-white border border-white/5 hover:border-white/10'}`}
+                : 'bg-gray-50 dark:bg-white/5 text-gray-500 hover:text-gray-700 dark:hover:text-white border border-gray-200 dark:border-white/5 hover:border-gray-300 dark:hover:border-white/10'}`}
           >
             All
           </button>
@@ -56,7 +56,7 @@ export function PortfolioSection({ items, categories }: PortfolioSectionProps) {
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200
                 ${activeCategory === cat.id
                   ? 'bg-primary text-white shadow-lg shadow-primary/25'
-                  : 'bg-white/5 text-gray-500 hover:text-white border border-white/5 hover:border-white/10'}`}
+                  : 'bg-gray-50 dark:bg-white/5 text-gray-500 hover:text-gray-700 dark:hover:text-white border border-gray-200 dark:border-white/5 hover:border-gray-300 dark:hover:border-white/10'}`}
             >
               {cat.name}
             </button>
@@ -87,23 +87,23 @@ export function PortfolioSection({ items, categories }: PortfolioSectionProps) {
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 ) : (
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                    <svg className="w-10 h-10 text-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/5 flex items-center justify-center">
+                    <svg className="w-10 h-10 text-primary/30 dark:text-primary/40" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1}>
                       <path strokeLinecap="round" strokeLinejoin="round" d={mediaTypeIcons[item.mediaType] || mediaTypeIcons.detailed} />
                     </svg>
                   </div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <div>
-                    <h4 className="font-semibold text-sm">{item.title}</h4>
-                    <span className="text-gray-400 text-xs">
+                    <h4 className="font-semibold text-sm text-white">{item.title}</h4>
+                    <span className="text-gray-300 text-xs">
                       {typeof item.category === 'object' ? item.category.name : ''}
                     </span>
                   </div>
                 </div>
               </div>
-              <h4 className="mt-3 font-semibold text-sm">{item.title}</h4>
-              <span className="text-gray-600 text-xs">
+              <h4 className="mt-3 font-semibold text-sm text-[#222] dark:text-white">{item.title}</h4>
+              <span className="text-gray-400 text-xs">
                 {typeof item.category === 'object' ? item.category.name : ''}
               </span>
             </motion.figure>
@@ -112,7 +112,7 @@ export function PortfolioSection({ items, categories }: PortfolioSectionProps) {
       </div>
 
       {filteredItems.length === 0 && (
-        <p className="text-gray-600 text-center py-16">No portfolio items yet.</p>
+        <p className="text-gray-400 dark:text-gray-600 text-center py-16">No portfolio items yet.</p>
       )}
 
       {/* Lightbox modal */}
@@ -122,21 +122,21 @@ export function PortfolioSection({ items, categories }: PortfolioSectionProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
             onClick={() => setLightboxItem(null)}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-dark-card border border-white/10 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6"
+              className="bg-white dark:bg-dark-card border border-gray-200 dark:border-white/10 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold">{lightboxItem.title}</h3>
+                <h3 className="text-xl font-bold text-[#222] dark:text-white">{lightboxItem.title}</h3>
                 <button
                   onClick={() => setLightboxItem(null)}
-                  className="text-gray-500 hover:text-white transition-colors p-1"
+                  className="text-gray-400 hover:text-gray-700 dark:text-gray-500 dark:hover:text-white transition-colors p-1"
                   aria-label="Close"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

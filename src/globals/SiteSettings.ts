@@ -28,6 +28,9 @@ export const SiteSettings: GlobalConfig = {
           options: [
             { label: 'LinkedIn', value: 'linkedin' },
             { label: 'GitHub', value: 'github' },
+            { label: 'Instagram', value: 'instagram' },
+            { label: 'Facebook', value: 'facebook' },
+            { label: 'X', value: 'x' },
             { label: 'Twitter', value: 'twitter' },
             { label: 'Email', value: 'email' },
           ],

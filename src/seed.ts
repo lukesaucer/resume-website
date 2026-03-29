@@ -37,6 +37,18 @@ async function seed() {
           platform: 'github',
           url: 'https://github.com/lukesaucer',
         },
+        {
+          platform: 'instagram',
+          url: 'https://www.instagram.com/thelukesaucer',
+        },
+        {
+          platform: 'facebook',
+          url: 'https://www.facebook.com/thelukesaucer',
+        },
+        {
+          platform: 'x',
+          url: 'https://www.x.com/thelukesaucer',
+        },
       ],
       contactInfo: {
         email: 'lukesaucer@proton.me',

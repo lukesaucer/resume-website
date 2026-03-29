@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: 'media',
   content: [
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,9 +10,9 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#0099e5',
-          dark: '#0077b3',
-          light: '#33adeb',
+          DEFAULT: '#0ba376',
+          dark: '#099665',
+          light: '#0fb886',
         },
         dark: {
           DEFAULT: '#0d0d0d',
@@ -19,6 +20,10 @@ const config: Config = {
           card: '#1c1c1c',
         },
         accent: '#f5f5f5',
+        sidebar: {
+          DEFAULT: '#434343',
+          light: '#616161',
+        },
       },
       fontFamily: {
         sans: ['var(--font-poppins)', 'Poppins', 'sans-serif'],

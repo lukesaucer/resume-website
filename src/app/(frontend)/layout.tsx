@@ -52,6 +52,9 @@ const jsonLd = {
   sameAs: [
     'https://www.linkedin.com/in/lukesaucer',
     'https://github.com/lukesaucer',
+    'https://www.instagram.com/thelukesaucer',
+    'https://www.facebook.com/thelukesaucer',
+    'https://www.x.com/thelukesaucer',
   ],
   knowsAbout: [
     'Software Engineering',
@@ -92,7 +95,7 @@ export default function FrontendLayout({
           {JSON.stringify(jsonLd)}
         </Script>
       </head>
-      <body className="bg-dark text-white font-sans antialiased">
+      <body className="bg-white text-gray-700 dark:bg-dark dark:text-gray-300 font-sans antialiased">
         {children}
       </body>
     </html>

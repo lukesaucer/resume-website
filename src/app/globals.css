@@ -8,18 +8,18 @@
   }
 
   body {
-    @apply bg-dark text-white;
+    @apply bg-white text-gray-700 dark:bg-dark dark:text-gray-300;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold;
+    @apply font-semibold text-[#222] dark:text-white;
   }
 
   a {
     @apply transition-colors duration-200;
   }
 
-  /* Custom scrollbar for sidebar */
+  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -29,17 +29,17 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-gray-700 rounded-full;
+    @apply bg-gray-300 rounded-full dark:bg-gray-700;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-600;
+    @apply bg-primary;
   }
 }
 
 @layer components {
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-12 relative inline-block;
+    @apply text-3xl md:text-4xl font-bold mb-12 relative inline-block text-[#222] dark:text-white;
   }
 
   .section-title span {
@@ -59,18 +59,20 @@
            hover:shadow-lg hover:shadow-primary/25;
   }
 
-  /* Glass-morphism card effect */
+  /* Light card style with dark mode */
   .glass-card {
-    @apply bg-dark-card/80 backdrop-blur-sm border border-white/5
-           rounded-xl transition-all duration-300;
+    @apply bg-white border border-gray-200 rounded-xl transition-all duration-300 shadow-sm
+           dark:bg-dark-card/80 dark:border-white/5 dark:shadow-none;
   }
 
   .glass-card:hover {
-    @apply border-primary/20 shadow-lg shadow-primary/5;
+    @apply border-primary/30 shadow-md
+           dark:border-primary/20 dark:shadow-lg dark:shadow-primary/5;
   }
 
   /* Section divider line */
   .section-divider {
-    @apply w-full h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent my-0;
+    @apply w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent my-0
+           dark:via-gray-800;
   }
 }

@@ -127,8 +127,8 @@ export function ContactSection({ siteSettings }: ContactSectionProps) {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-gray-600 text-xs uppercase tracking-wider">{card.label}</p>
-                    <p className="text-gray-300 text-sm font-medium">{card.value}</p>
+                    <p className="text-gray-400 dark:text-gray-600 text-xs uppercase tracking-wider">{card.label}</p>
+                    <p className="text-gray-700 dark:text-gray-300 text-sm font-medium">{card.value}</p>
                   </div>
                 </div>
               </StaggerItem>
@@ -137,14 +137,14 @@ export function ContactSection({ siteSettings }: ContactSectionProps) {
 
         {/* Contact form */}
         <AnimateIn delay={0.2} className="md:col-span-8">
-          <h3 className="text-xl font-bold mb-6">
+          <h3 className="text-xl font-bold mb-6 text-[#222] dark:text-white">
             How Can I <span className="text-primary">Help You?</span>
           </h3>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid md:grid-cols-2 gap-5">
               <div>
-                <label htmlFor="name" className="block text-xs text-gray-600 mb-1.5 uppercase tracking-wider">
+                <label htmlFor="name" className="block text-xs text-gray-400 dark:text-gray-600 mb-1.5 uppercase tracking-wider">
                   Full Name
                 </label>
                 <input
@@ -154,15 +154,15 @@ export function ContactSection({ siteSettings }: ContactSectionProps) {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3
-                             text-white text-sm placeholder-gray-700
-                             focus:border-primary/50 focus:bg-white/[0.07] focus:outline-none focus:ring-1 focus:ring-primary/25
+                  className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-4 py-3
+                             text-gray-700 dark:text-white text-sm placeholder-gray-300 dark:placeholder-gray-700
+                             focus:border-primary/50 focus:bg-white dark:focus:bg-white/[0.07] focus:outline-none focus:ring-1 focus:ring-primary/25
                              transition-all"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-xs text-gray-600 mb-1.5 uppercase tracking-wider">
+                <label htmlFor="email" className="block text-xs text-gray-400 dark:text-gray-600 mb-1.5 uppercase tracking-wider">
                   Email Address
                 </label>
                 <input
@@ -172,16 +172,16 @@ export function ContactSection({ siteSettings }: ContactSectionProps) {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3
-                             text-white text-sm placeholder-gray-700
-                             focus:border-primary/50 focus:bg-white/[0.07] focus:outline-none focus:ring-1 focus:ring-primary/25
+                  className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-4 py-3
+                             text-gray-700 dark:text-white text-sm placeholder-gray-300 dark:placeholder-gray-700
+                             focus:border-primary/50 focus:bg-white dark:focus:bg-white/[0.07] focus:outline-none focus:ring-1 focus:ring-primary/25
                              transition-all"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="subject" className="block text-xs text-gray-600 mb-1.5 uppercase tracking-wider">
+              <label htmlFor="subject" className="block text-xs text-gray-400 dark:text-gray-600 mb-1.5 uppercase tracking-wider">
                 Subject
               </label>
               <input
@@ -191,15 +191,15 @@ export function ContactSection({ siteSettings }: ContactSectionProps) {
                 required
                 value={formData.subject}
                 onChange={handleChange}
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3
-                           text-white text-sm placeholder-gray-700
-                           focus:border-primary/50 focus:bg-white/[0.07] focus:outline-none focus:ring-1 focus:ring-primary/25
+                className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-4 py-3
+                           text-gray-700 dark:text-white text-sm placeholder-gray-300 dark:placeholder-gray-700
+                           focus:border-primary/50 focus:bg-white dark:focus:bg-white/[0.07] focus:outline-none focus:ring-1 focus:ring-primary/25
                            transition-all"
               />
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-xs text-gray-600 mb-1.5 uppercase tracking-wider">
+              <label htmlFor="message" className="block text-xs text-gray-400 dark:text-gray-600 mb-1.5 uppercase tracking-wider">
                 Message
               </label>
               <textarea
@@ -209,9 +209,9 @@ export function ContactSection({ siteSettings }: ContactSectionProps) {
                 rows={5}
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3
-                           text-white text-sm placeholder-gray-700
-                           focus:border-primary/50 focus:bg-white/[0.07] focus:outline-none focus:ring-1 focus:ring-primary/25
+                className="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-4 py-3
+                           text-gray-700 dark:text-white text-sm placeholder-gray-300 dark:placeholder-gray-700
+                           focus:border-primary/50 focus:bg-white dark:focus:bg-white/[0.07] focus:outline-none focus:ring-1 focus:ring-primary/25
                            transition-all resize-none"
               />
             </div>
@@ -225,7 +225,7 @@ export function ContactSection({ siteSettings }: ContactSectionProps) {
             </button>
 
             {formState === 'success' && (
-              <p className="text-green-400 text-sm flex items-center gap-2">
+              <p className="text-green-600 dark:text-green-400 text-sm flex items-center gap-2">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
@@ -233,15 +233,15 @@ export function ContactSection({ siteSettings }: ContactSectionProps) {
               </p>
             )}
             {formState === 'error' && (
-              <p className="text-red-400 text-sm">Failed to send message. Please try again.</p>
+              <p className="text-red-500 dark:text-red-400 text-sm">Failed to send message. Please try again.</p>
             )}
           </form>
         </AnimateIn>
       </div>
 
       {/* Footer */}
-      <div className="mt-24 pt-8 border-t border-white/5 text-center">
-        <p className="text-gray-700 text-xs">
+      <div className="mt-24 pt-8 border-t border-gray-200 dark:border-white/5 text-center">
+        <p className="text-gray-400 dark:text-gray-700 text-xs">
           &copy; {new Date().getFullYear()} Luke Saucer. All rights reserved.
         </p>
       </div>

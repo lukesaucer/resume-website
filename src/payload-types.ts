@@ -739,7 +739,7 @@ export interface SiteSetting {
   siteDescription?: string | null;
   socialLinks?:
     | {
-        platform: 'linkedin' | 'github' | 'twitter' | 'email';
+        platform: 'linkedin' | 'github' | 'instagram' | 'facebook' | 'x' | 'twitter' | 'email';
         url: string;
         id?: string | null;
       }[]
