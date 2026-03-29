@@ -1,4 +1,21 @@
 import type { CollectionConfig } from 'payload'
+import nodemailer from 'nodemailer'
+
+// Lazily create transporter only when SMTP is configured
+function getTransporter() {
+  const host = process.env.SMTP_HOST
+  if (!host) return null
+
+  return nodemailer.createTransport({
+    host,
+    port: Number(process.env.SMTP_PORT) || 587,
+    secure: process.env.SMTP_SECURE === 'true',
+    auth: {
+      user: process.env.SMTP_USER || '',
+      pass: process.env.SMTP_PASS || '',
+    },
+  })
+}
 
 export const ContactSubmissions: CollectionConfig = {
   slug: 'contact-submissions',
@@ -18,7 +35,6 @@ export const ContactSubmissions: CollectionConfig = {
         if (operation !== 'create') return data
 
         const secret = process.env.RECAPTCHA_SECRET_KEY
-        // Skip verification if reCAPTCHA is not configured (dev mode)
         if (!secret) return data
 
         const token = data?.recaptchaToken
@@ -38,9 +54,38 @@ export const ContactSubmissions: CollectionConfig = {
           throw new Error('reCAPTCHA verification failed')
         }
 
-        // Strip the token so it's not stored in the database
         const { recaptchaToken: _, ...cleanData } = data || {}
         return cleanData
+      },
+    ],
+    afterChange: [
+      async ({ doc, operation }) => {
+        if (operation !== 'create') return
+
+        const transporter = getTransporter()
+        if (!transporter) return
+
+        const notifyEmail = process.env.CONTACT_NOTIFY_EMAIL || 'lukesaucer@proton.me'
+
+        try {
+          await transporter.sendMail({
+            from: process.env.SMTP_FROM || notifyEmail,
+            to: notifyEmail,
+            subject: `New Contact Form Submission: ${doc.subject}`,
+            text: [
+              `Name: ${doc.name}`,
+              `Email: ${doc.email}`,
+              `Subject: ${doc.subject}`,
+              '',
+              'Message:',
+              doc.message,
+            ].join('\n'),
+            replyTo: doc.email,
+          })
+        } catch (err) {
+          // Log but don't fail the submission -- the message is already saved
+          console.error('Failed to send contact notification email:', err)
+        }
       },
     ],
   },
