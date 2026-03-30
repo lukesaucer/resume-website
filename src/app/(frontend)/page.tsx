@@ -9,8 +9,9 @@ import { AboutSection } from '@/components/sections/AboutSection'
 import { ResumeSection } from '@/components/sections/ResumeSection'
 import { PortfolioSection } from '@/components/sections/PortfolioSection'
 import { ContactSection } from '@/components/sections/ContactSection'
-import { GallerySidebar } from '@/components/GallerySidebar'
+import { GallerySection } from '@/components/sections/GallerySection'
 import { fetchPinnedRepos } from '@/lib/github'
+import { fetchInstagramMedia } from '@/lib/instagram'
 
 export default async function Home() {
   const payload = await getPayload({ config })
@@ -28,6 +29,7 @@ export default async function Home() {
     portfolioCategories,
     galleryPhotos,
     pinnedRepos,
+    instagramPosts,
   ] = await Promise.all([
     payload.findGlobal({ slug: 'site-settings' }),
     payload.findGlobal({ slug: 'home-page' }),
@@ -45,13 +47,14 @@ export default async function Home() {
       limit: 30,
     }),
     fetchPinnedRepos(),
+    fetchInstagramMedia(12),
   ])
 
   return (
     <div className="flex min-h-screen">
       <Sidebar siteSettings={siteSettings} homePage={homePage} />
 
-      <main className="flex-1 lg:ml-[280px] xl:mr-[240px]">
+      <main className="flex-1 lg:ml-[280px]">
         <HomeSection data={homePage} />
         <AboutSection data={aboutMe} />
         <ResumeSection
@@ -65,10 +68,13 @@ export default async function Home() {
           categories={portfolioCategories.docs}
           pinnedRepos={pinnedRepos}
         />
+        <GallerySection
+          photos={galleryPhotos.docs}
+          instagramPosts={instagramPosts}
+          instagramHandle="thelukesaucer"
+        />
         <ContactSection siteSettings={siteSettings} />
       </main>
-
-      <GallerySidebar photos={galleryPhotos.docs} />
     </div>
   )
 }

@@ -14,21 +14,16 @@ export const GalleryPhotos: CollectionConfig = {
     staticDir: '../public/gallery',
     imageSizes: [
       {
-        name: 'galleryThumb',
-        width: 240,
-        height: 240,
+        // Grid card thumbnail (matches Portfolio aspect ratio)
+        name: 'card',
+        width: 768,
+        height: 576,
         position: 'centre',
       },
       {
-        // 480px wide for 240px sidebar at 2x retina
-        name: 'gallerySidebar',
-        width: 480,
-        height: undefined,
-        position: 'centre',
-      },
-      {
+        // Full size for lightbox
         name: 'galleryFull',
-        width: 1200,
+        width: 1920,
         height: undefined,
         position: 'centre',
       },

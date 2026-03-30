@@ -7,7 +7,16 @@ const nextConfig: NextConfig = {
     reactCompiler: false,
   },
   images: {
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.cdninstagram.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.fbcdn.net',
+      },
+    ],
   },
   webpack: (config) => {
     // Alias to allow importing handleServerFunctions which is not

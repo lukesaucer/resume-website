@@ -415,15 +415,7 @@ export interface GalleryPhoto {
   focalX?: number | null;
   focalY?: number | null;
   sizes?: {
-    galleryThumb?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    gallerySidebar?: {
+    card?: {
       url?: string | null;
       width?: number | null;
       height?: number | null;
@@ -768,17 +760,7 @@ export interface GalleryPhotosSelect<T extends boolean = true> {
   sizes?:
     | T
     | {
-        galleryThumb?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        gallerySidebar?:
+        card?:
           | T
           | {
               url?: T;

@@ -33,12 +33,14 @@ interface GallerySidebarProps {
 export function GallerySidebar({ photos }: GallerySidebarProps) {
   const [lightboxPhoto, setLightboxPhoto] = useState<GalleryPhoto | null>(null)
 
-  if (!photos || photos.length === 0) return null
-
   return (
     <>
       {/* Right sidebar -- xl+ only */}
       <aside className="hidden xl:block fixed top-0 right-0 h-screen w-[240px] overflow-y-auto z-10 py-6 px-3">
+        <h3 className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-4 px-1">Gallery</h3>
+        {(!photos || photos.length === 0) ? (
+          <p className="text-xs text-gray-400 dark:text-gray-500 px-1">No photos yet.</p>
+        ) : (
         <div className="space-y-3">
           {photos.map((photo, i) => {
             const thumbSrc = photo.sizes?.gallerySidebar?.url || photo.url
@@ -71,6 +73,7 @@ export function GallerySidebar({ photos }: GallerySidebarProps) {
             )
           })}
         </div>
+        )}
       </aside>
 
       {/* Lightbox */}
